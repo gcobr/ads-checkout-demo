@@ -1,6 +1,7 @@
 // Other kinds could be added in the future
 const policyTypes = {
-    freeItem: 'FreeItem'
+    freeItem: 'FreeItem',
+    percentageOfItems: 'PercentageOfItems'
 }
 
 let defaultPriceList, customPriceList, customers, policies;
@@ -24,6 +25,14 @@ function newFreeItemPolicy(id, customerId, productId, minQuantity) {
     };
 }
 
+function newPercentageOfItemsPolicy(id, customerId, percentage) {
+    return {
+        id: id,
+        customerId: customerId,
+        type: policyTypes.percentageOfItems,
+        percentage: percentage
+    };
+}
 
 function findPrice(productId) {
     return defaultPriceList.find(defaultPrice => defaultPrice.id === productId);
@@ -80,6 +89,10 @@ function addFreeItemPolicy(id, customerId, productId, minQuantity) {
     policies.push(newFreeItemPolicy(id, customerId, productId, minQuantity));
 }
 
+function addPercentageOfItemsPolicy(id, customerId, percentage) {
+    policies.push(newPercentageOfItemsPolicy(id, customerId, percentage));
+}
+
 function listPrices() {
     return defaultPriceList;
 }
@@ -100,6 +113,7 @@ module.exports = {
         addPrice,
         addCustomPrice,
         addFreeItemPolicy,
+        addPercentageOfItemsPolicy,
         reset
     }
 }

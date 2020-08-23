@@ -242,6 +242,25 @@ describe('Shopping Cart', () => {
             expect(cart.orderTotal).toBe(1439.95);
         });
 
+        it('for David Jones', () => {
+            const cart = shoppingCart.calculate({
+                customerId: mockData.customerIds.davidJones,
+                items: [
+                    {productId: mockData.adIds.classic, quantity: 10}
+                ]
+            });
+            expect(cart.customerName).toEqual('David Jones');
+            expect(cart.items).toContainEqual({
+                productId: mockData.adIds.classic,
+                quantity: 10,
+                name: 'Classic Ad',
+                // Lower price, for they get 10% off of every item
+                unitPrice: 242.99,
+                totalItemPrice: 2429.90
+            });
+            expect(cart.orderTotal).toBe(2429.90);
+        });
+
     });
 
 });
