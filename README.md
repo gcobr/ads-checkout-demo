@@ -1,12 +1,12 @@
 # Ads shopping cart checkout
 
-Live endpoint: [ads-checkout-demo.herokuapp.com](https://ads-checkout-demo.herokuapp.com/).
-
 See [API Usage](#api-usage) below.
 
 ## Continuous integration and deployment
 
 This API automatically deployed to Heroku every time code is pushed to the master branch of this repository. This workflow is enabled by GitHub Actions. See the configuration file in [.github/workflows](./.github/workflows).
+
+See the build/deployment history in [GitHub Actions](/../../actions).
 
 ## Development
 
@@ -49,6 +49,8 @@ Listening on port 3000
 ## API usage
 
 The examples below use `curl` and [jq](https://stedolan.github.io/jq/).
+
+This application is deployed to Heroku: [ads-checkout-demo.herokuapp.com](https://ads-checkout-demo.herokuapp.com/).
 
 ### See the price list
 
