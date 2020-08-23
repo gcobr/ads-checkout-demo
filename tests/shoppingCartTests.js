@@ -136,12 +136,14 @@ describe('Shopping Cart', () => {
             expect(cart.customerName).toEqual('Guest');
             expect(cart.items).toContainEqual({
                 productId: mockData.adIds.classic,
+                name: 'Classic Ad',
                 quantity: 2,
                 unitPrice: 269.99,
                 totalItemPrice: 539.98
             });
             expect(cart.items).toContainEqual({
                 productId: mockData.adIds.premium,
+                name: 'Premium Ad',
                 quantity: 3,
                 unitPrice: 394.99,
                 totalItemPrice: 1184.97
@@ -163,6 +165,7 @@ describe('Shopping Cart', () => {
                 {
                     productId: mockData.adIds.standout,
                     quantity: 7,
+                    name: 'Stand out Ad',
                     unitPrice: 322.99,
                     // Price of 6 instead of 7 (since they get 1 free for every 5)
                     totalItemPrice: 1937.94
@@ -170,12 +173,14 @@ describe('Shopping Cart', () => {
             expect(cart.items).toContainEqual({
                 productId: mockData.adIds.classic,
                 quantity: 2,
+                name: 'Classic Ad',
                 unitPrice: 269.99,
                 totalItemPrice: 539.98
             });
             expect(cart.items).toContainEqual({
                 productId: mockData.adIds.premium,
                 quantity: 3,
+                name: 'Premium Ad',
                 // MYER's exclusive price
                 unitPrice: 389.99,
                 totalItemPrice: 1169.97
@@ -195,12 +200,14 @@ describe('Shopping Cart', () => {
             expect(cart.items).toContainEqual({
                 productId: mockData.adIds.standout,
                 quantity: 2,
+                name: 'Stand out Ad',
                 unitPrice: 322.99,
                 totalItemPrice: 645.98
             });
             expect(cart.items).toContainEqual({
                 productId: mockData.adIds.classic,
                 quantity: 7,
+                name: 'Classic Ad',
                 unitPrice: 269.99,
                 // Price of 5 instead of 7 (2 free since they get 1 free for every 3)
                 totalItemPrice: 1349.95
@@ -220,6 +227,7 @@ describe('Shopping Cart', () => {
             expect(cart.items).toContainEqual({
                 productId: mockData.adIds.standout,
                 quantity: 3,
+                name: 'Stand out Ad',
                 // Exclusive price for Axil
                 unitPrice: 299.99,
                 totalItemPrice: 899.97
@@ -227,6 +235,7 @@ describe('Shopping Cart', () => {
             expect(cart.items).toContainEqual({
                 productId: mockData.adIds.classic,
                 quantity: 2,
+                name: 'Classic Ad',
                 unitPrice: 269.99,
                 totalItemPrice: 539.98
             });
