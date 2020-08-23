@@ -4,7 +4,7 @@ See [API Usage](#api-usage) below.
 
 ## Continuous integration and deployment
 
-This API automatically deployed to Heroku every time code is pushed to the master branch of this repository. This workflow is enabled by GitHub Actions. See the configuration file in [.github/workflows](./.github/workflows).
+This API is automatically deployed to [Heroku](heroku.com) every time code is pushed to this repository. This workflow is enabled by GitHub Actions. See the configuration file in [.github/workflows](./.github/workflows).
 
 See the build/deployment history in [GitHub Actions](/../../actions).
 
@@ -200,3 +200,14 @@ database.addCustomer(105, 'NAB Bank');
 // NAB now gets 1 free Stand out Ad (id: 22) for every 4 they purchase
 database.addFreeItemPolicy(105, 22, 4);
 ~~~
+
+## TODO
+
+The following improvements could be made to make this a Production-ready product:
+
+1. Unit tests for functions in the `discounts` module. At the moment, it is tested in an integrated manner only.
+1. Add live API documentation (Swagger).
+1. Configure GitHub Actions not to deploy branches other than `master` to the live environment. Instead, only run tests and build images.
+1. Usage of a real external database to store entities: customers, default prices, custom prices, pricing policies.
+1. Add API authentication.
+1. Add request limiting to API calls.
