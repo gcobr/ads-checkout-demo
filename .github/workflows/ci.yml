@@ -8,6 +8,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         name: Check out code
+      - uses: actions/setup-node@v1
+        name: Tests
+        with:
+          - node-version: 12.x
+      - run: npm install
+      - run: npm test
       - uses: akhileshns/heroku-deploy@v3.4.6
         name: Deploy image to Heroku and publish
         with:
