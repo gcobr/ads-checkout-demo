@@ -39,7 +39,7 @@ function calculate(shoppingCart) {
                 name: price.name,
                 quantity: item.quantity,
                 unitPrice: price.price,
-                totalItemPrice: item.quantity * price.price
+                totalItemPrice: Number((item.quantity * price.price).toFixed(2))
             }
         }
     });
@@ -58,7 +58,8 @@ function calculate(shoppingCart) {
             }
         }
     }
-    order.orderTotal = order.items.reduce((total, item) => total += item.totalItemPrice, 0.0);
+    order.orderTotal = order.items.reduce((total, item) => total += item.totalItemPrice, 0);
+    order.orderTotal = Number(order.orderTotal.toFixed(2))
     return order
 }
 

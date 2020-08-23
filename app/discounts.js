@@ -6,7 +6,7 @@ function freeItemPolicy(productId, minQuantity) {
         if (eligibleItem) {
             const freeItemCount = Math.floor(eligibleItem.quantity / minQuantity);
             const newQuantity = eligibleItem.quantity - freeItemCount;
-            eligibleItem.totalItemPrice = newQuantity * eligibleItem.unitPrice;
+            eligibleItem.totalItemPrice = Number((newQuantity * eligibleItem.unitPrice).toFixed(2));
         }
     }
 }

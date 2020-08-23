@@ -148,7 +148,7 @@ describe('Shopping Cart', () => {
                 unitPrice: 394.99,
                 totalItemPrice: 1184.97
             });
-            expect(cart.orderTotal).toBeCloseTo(1724.95, 2);
+            expect(cart.orderTotal).toBe(1724.95);
         });
 
         it('for MYER', () => {
@@ -185,7 +185,7 @@ describe('Shopping Cart', () => {
                 unitPrice: 389.99,
                 totalItemPrice: 1169.97
             });
-            expect(cart.orderTotal).toBeCloseTo(3647.89, 2);
+            expect(cart.orderTotal).toBe(3647.89);
         });
 
         it('for SecondBite', () => {
@@ -212,7 +212,7 @@ describe('Shopping Cart', () => {
                 // Price of 5 instead of 7 (2 free since they get 1 free for every 3)
                 totalItemPrice: 1349.95
             });
-            expect(cart.orderTotal).toBeCloseTo(1995.93, 2);
+            expect(cart.orderTotal).toBe(1995.93);
         });
 
         it('for Axil', () => {
@@ -239,7 +239,7 @@ describe('Shopping Cart', () => {
                 unitPrice: 269.99,
                 totalItemPrice: 539.98
             });
-            expect(cart.orderTotal).toBeCloseTo(1439.95, 2);
+            expect(cart.orderTotal).toBe(1439.95);
         });
 
     });
