@@ -11,11 +11,22 @@ function freeItemPolicy(productId, minQuantity) {
     }
 }
 
+function percentageOfItems(percentage) {
+    return function (order) {
+        order.items.forEach(item => {
+            const newUnitPrice = item.unitPrice - (item.unitPrice * percentage / 100);
+            item.unitPrice = Number(newUnitPrice.toFixed(2));
+            item.totalItemPrice = item.unitPrice * item.quantity;
+        });
+    }
+}
 
 function forPricingPolicy(policy) {
     switch (policy.type) {
         case 'FreeItem':
             return freeItemPolicy(policy.productId, policy.minQuantity);
+        case 'PercentageOfItems':
+            return percentageOfItems(policy.percentage);
         default:
             return noChange
     }
