@@ -12,6 +12,12 @@ This API automatically deployed to Heroku every time code is pushed to the maste
 
 ### Run tests locally
 
+Install dependencies:
+~~~
+$ npm install
+~~~
+
+Run the tests:
 ~~~
 $ npm test
 
