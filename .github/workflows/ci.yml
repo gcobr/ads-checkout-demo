@@ -1,0 +1,17 @@
+name: CI
+on: [push]
+jobs:
+  build:
+    name: Deploy
+    # This job runs on Linux
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        name: Check out code
+      - uses: akhileshns/heroku-deploy@v3.4.6
+        name: Deploy image to Heroku and publish
+        with:
+          heroku_api_key: ${{secrets.HEROKU_KEY}}
+          heroku_app_name: "ads-checkout-demo"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          usedocker: true
