@@ -2,26 +2,38 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const defaultPort = 3000;
 const app = express();
+app.use(bodyParser.json());
 
 const {shoppingCart} = require('./app/shoppingCart');
 
-app.use(bodyParser.json());
+// This initialises a fake in-memory database
+const initialData = require('./tests/initialData');
+const {database} = require('./app/database');
+initialData.initialiseDatabase(database);
 
 const port = parseInt(process.env['PORT']) || defaultPort;
 
 app.get('/', (req, res) => {
-    res.send('Hello');
+    res.send('Please refer to: https://github.com/gcobr/ads-checkout-demo');
 });
 
 app.post('/cart', (req, res) => {
     const cart = req.body;
     if (!shoppingCart.valid(cart)) {
-        res.status(400);
+        res.sendStatus(400);
     } else {
         const normalised = shoppingCart.normalise(cart);
         const calculated = shoppingCart.calculate(normalised);
         res.send(calculated);
     }
+});
+
+app.get('/prices', (req, res) => {
+    res.send(database.listPrices());
+});
+
+app.get('/customers', (req, res) => {
+    res.send(database.listCustomers());
 });
 
 

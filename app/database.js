@@ -1,9 +1,3 @@
-/*
- * In a real-world implementation, the data
- * below would come from an external database.
- * We are hard-coding it here for the sake of simplicity.
- */
-
 // Other kinds could be added in the future
 const policyTypes = {
     freeItem: 'FreeItem'
@@ -86,12 +80,22 @@ function addFreeItemPolicy(id, customerId, productId, minQuantity) {
     policies.push(newFreeItemPolicy(id, customerId, productId, minQuantity));
 }
 
+function listPrices() {
+    return defaultPriceList;
+}
+
+function listCustomers() {
+    return customers;
+}
+
 module.exports = {
     database: {
         findPriceForCustomer,
         findPrice,
         findCustomer,
         findPricingPoliciesForCustomer,
+        listPrices,
+        listCustomers,
         addCustomer,
         addPrice,
         addCustomPrice,

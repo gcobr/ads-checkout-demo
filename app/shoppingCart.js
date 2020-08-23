@@ -26,20 +26,24 @@ function calculate(shoppingCart) {
     if (shoppingCart.customerId) {
         identifiedCustomer = database.findCustomer(shoppingCart.customerId);
     }
-    const calculatedItems = shoppingCart.items.map(item => {
+    let calculatedItems = shoppingCart.items.map(item => {
         let price;
         if (identifiedCustomer) {
             price = database.findPriceForCustomer(shoppingCart.customerId, item.productId);
         } else {
             price = database.findPrice(item.productId);
         }
-        return {
-            productId: item.productId,
-            quantity: item.quantity,
-            unitPrice: price.price,
-            totalItemPrice: item.quantity * price.price
+        if (price) {
+            return {
+                productId: item.productId,
+                name: price.name,
+                quantity: item.quantity,
+                unitPrice: price.price,
+                totalItemPrice: item.quantity * price.price
+            }
         }
     });
+    calculatedItems = calculatedItems.filter(item => !!item);
     const customerName = identifiedCustomer ? identifiedCustomer.name : guestCustomerName;
     const order = {
         customerName: customerName,
