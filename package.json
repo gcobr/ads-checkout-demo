@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest ./tests"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,16 @@
     "url": "https://github.com/gcobr/ads-checkout-demo/issues"
   },
   "homepage": "https://github.com/gcobr/ads-checkout-demo#readme",
+  "devDependencies": {
+    "@jest/globals": "^26.4.2",
+    "jest": "^26.4.2"
+  },
+  "jest": {
+    "testRegex": ".*Tests\\.js$",
+    "testEnvironment": "node"
+  },
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1"
   }
 }
