@@ -53,12 +53,12 @@ The examples below use `curl` and [jq](https://stedolan.github.io/jq/).
 ### See the price list
 
 ~~~
-$ curl https://ads-checkout-demo.herokuapp.com/prices
+$ curl https://ads-checkout-demo.herokuapp.com/prices | jq
 ~~~
 
 ### Find the identifiers of our customers
 ~~~
-$ curl https://ads-checkout-demo.herokuapp.com/customers
+$ curl https://ads-checkout-demo.herokuapp.com/customers | jq
 ~~~
 
 ### Submit a shopping cart for calculation and see the result
@@ -169,4 +169,32 @@ Response:
   ],
   "orderTotal": 2597.92
 }
+~~~
+
+## Extensibility
+
+### New price overrides for other customers
+
+Simply add it to the database:
+
+~~~javascript
+const {database} = require('./app/database');
+
+// New customer: ANZ Bank
+database.addCustomer(100, 'ANZ Bank');
+// Stand out Ad (id: 22) goes for $200.00 to ANZ
+database.addCustomPrice(100, 22, 200);
+~~~
+
+### New free item rule
+
+Simply add it to the database:
+
+~~~javascript
+const {database} = require('./app/database');
+
+// New customer: NAB Bank
+database.addCustomer(105, 'NAB Bank');
+// NAB now gets 1 free Stand out Ad (id: 22) for every 4 they purchase
+database.addFreeItemPolicy(105, 22, 4);
 ~~~
